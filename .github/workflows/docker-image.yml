@@ -29,9 +29,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag  ${{ env.IMAGE_NAME }}:latest \
-                          --tag ${{ env.IMAGE_NAME }}:${{ env.FLUTTER_VERSION }} \
-                          --build-arg flutter_version=${{ env.FLUTTER_VERSION }}
+      run: docker build . --file Dockerfile --tag  ${{ env.IMAGE_NAME }}:latest --tag ${{ env.IMAGE_NAME }}:${{ env.FLUTTER_VERSION }} --build-arg flutter_version=${{ env.FLUTTER_VERSION }}
     - name: Docker login
       run: echo ${{ env.password }}  | docker login -u ${{ env.username }}  ${{ env.REGISTRY }} --password-stdin
     - name: Publish Latest
