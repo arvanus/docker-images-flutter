@@ -1,0 +1,35 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: docker.io
+  # github.repository as <account>/<repo>
+  #IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: arvanus/cirrusci-flutter
+  username: ${{ github.actor }}
+  password: ${{ secrets.DOCKER_TOKEN }}
+
+defaults:
+  run:
+    working-directory: ./sdk
+    
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag  ${{ env.IMAGE_NAME }}:latest
+    - name: Docker login
+      run: echo ${{ env.password }}  | docker login -u ${{ env.username }}  ${{ env.REGISTRY }} --password-stdin
+    - name: Publish Latest
+      run: docker push ${{ env.IMAGE_NAME }}:latest
