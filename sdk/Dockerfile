@@ -1,4 +1,4 @@
-FROM arvanus/cirrusci-android-sdk:31
+FROM arvanus/cirrusci-android-sdk:latest
 
 USER root
 
