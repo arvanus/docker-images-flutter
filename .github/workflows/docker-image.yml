@@ -40,8 +40,9 @@ jobs:
   build-cache:
     env:
       IMAGE_NAME: arvanus/cirrusci-flutter/cache
-    run:
-      working-directory: ./sdk/cache
+    defaults:
+      run:
+        working-directory: ./sdk/cache
     runs-on: ubuntu-latest
 
     steps:
