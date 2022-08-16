@@ -1,15 +1,4 @@
 FROM arvanus/cirrusci-flutter:latest
 
-RUN mkdir /gencache 
-RUN flutter create /gencache
-RUN cd /gencache && flutter build apk
-RUN rm -rf /gencache/*
-RUN flutter create /gencache
-RUN cd /gencache && flutter build apk
-RUN rm -rf /gencache
+RUN sdkmanager "platforms;android-28" "build-tools;28.0.0" "platforms;android-29" "build-tools;29.0.0" "platforms;android-30" "build-tools;30.0.0" "platforms;android-31" "build-tools;31.0.0"
 
-#https://cirrus-ci.org/examples/#gradle
-RUN rm -rf ~/.gradle/caches/transforms-1
-RUN rm -rf ~/.gradle/caches/journal-1
-RUN rm -rf ~/.gradle/caches/jars-3/*/buildSrc.jar
-RUN find ~/.gradle/caches/ -name "*.lock" -type f -delete
