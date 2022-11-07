@@ -15,7 +15,7 @@ env:
   IMAGE_CACHETAG: ""
   username: ${{ github.actor }}
   password: ${{ secrets.DOCKER_TOKEN }}
-  FLUTTER_VERSION: 3.3.2
+  FLUTTER_VERSION: 3.3.6
 
 defaults:
   run:
