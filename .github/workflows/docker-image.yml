@@ -13,7 +13,8 @@ env:
   #IMAGE_NAME: ${{ github.repository }}
   IMAGE_NAME: arvanus/cirrusci-flutter
   IMAGE_CACHETAG: ""
-  username: ${{ github.actor }}
+  #username: ${{ github.actor }}
+  username: arvanus
   password: ${{ secrets.DOCKER_TOKEN }}
   FLUTTER_VERSION: 3.3.9
 
