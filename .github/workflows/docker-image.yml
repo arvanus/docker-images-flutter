@@ -16,7 +16,7 @@ env:
   #username: ${{ github.actor }}
   username: arvanus
   password: ${{ secrets.DOCKER_TOKEN }}
-  FLUTTER_VERSION: 3.3.10
+  FLUTTER_VERSION: 3.7.0
 
 defaults:
   run:
